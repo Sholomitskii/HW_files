@@ -1,3 +1,4 @@
+import json
 with open('recipe.txt', 'r') as file:
     cook_book = {}
     for line in file:
@@ -12,7 +13,7 @@ with open('recipe.txt', 'r') as file:
             product_info['measure'] = ingridient[2]
             ingrid_list.append(product_info)
         cook_book[dish_name.strip()] = ingrid_list
-    print(cook_book)
+    print(json.dumps(cook_book, sort_keys=True, ensure_ascii=False, indent=2))
     
 def get_shop_list_by_dishes(dishes, person_count):
     product_dict = {}
@@ -27,7 +28,7 @@ def get_shop_list_by_dishes(dishes, person_count):
                 product_dict[ingredient_name] = prod_inf
                 prod_inf['measure'] = product_info['measure']
                 prod_inf['quantity'] = product_info['quantity']
-    print(product_dict)        
+    print(json.dumps(product_dict, sort_keys=True, ensure_ascii=False, indent=2))       
     
 get_shop_list_by_dishes(['Омлет','Фахитос'], 10)
 
